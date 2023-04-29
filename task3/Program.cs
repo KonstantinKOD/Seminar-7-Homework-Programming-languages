@@ -7,53 +7,57 @@
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
 
-int lines = 5;
-int columns = 5;
-int[,] array = new int[lines, columns];
-
-int[,] CreateArray(int lines, int columns)
+internal class Program
 {
-    for (int i = 0; i < array.GetLength(0); i++)
+    private static void Main(string[] args)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        int lines = 5;
+        int columns = 5;
+        int[,] array = new int[lines, columns];
+
+        int[,] CreateArray(int lines, int columns)
         {
-            array[i,j]=new Random().Next(0,11);
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    array[i, j] = new Random().Next(0, 11);
+                }
+            }
+            return array;
         }
-    }
-    return array;
-}
 
-void PrintArray(int[,] array)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        System.Console.Write("[ ");
-        for (int j = 0; j < array.GetLength(1); j++)
+        void PrintArray(int[,] array)
         {
-            System.Console.Write(array[i,j]+": ");
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                Console.Write("[ ");
+                for (int j = 0; j < array.GetLength(1); j++)
+                {
+                    Console.Write(array[i, j] + ": ");
+                }
+                Console.WriteLine("]");
+            }
         }
-        System.Console.WriteLine("]");
-    }
-}
 
-System.Console.WriteLine();
-PrintArray(CreateArray(5,5));
-System.Console.WriteLine();
+        Console.WriteLine();
+        PrintArray(CreateArray(5, 5));
+        Console.WriteLine();
 
-int ArithmeticMeanInArray(int[,] array)
-{
-    System.Console.WriteLine("-----Сумма каждого столбца-----");
-    for (int j = 0; j < array.GetLength(1); j++)
-    {
-        double summ = 0;
-        for (int i = 0; i < array.GetLength(0); i++)
+        void ArithmeticMeanInArray(int[,] array)
         {
-            summ += array[i,j];
+            Console.WriteLine("-----Сумма каждого столбца-----");
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                double summ = 0;
+                for (int i = 0; i < array.GetLength(0); i++)
+                {
+                    summ += array[i, j];
+                }
+                Console.Write(summ / array.GetLength(0) + " | ");
+            }
         }
-        System.Console.Write(summ / array.GetLength(0) + " | ");
-    }
-    return array[4,4];
-}
 
-ArithmeticMeanInArray(array);
-System.Console.WriteLine();
+        ArithmeticMeanInArray(array);
+    }
+}
