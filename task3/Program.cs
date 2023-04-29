@@ -55,9 +55,12 @@ internal class Program
                     summ += array[i, j];
                 }
                 Console.Write(summ / array.GetLength(0) + " | ");
+                
             }
+            Console.WriteLine();
         }
 
         ArithmeticMeanInArray(array);
+        Console.WriteLine();
     }
 }
